@@ -4,7 +4,7 @@
 #include<string.h>
 #include<ctype.h>
 
-//Declaração de funções
+///Declaração de funções
 void logar(void);
 void registrar(void);
 void consultarVacinas(void);
@@ -34,7 +34,7 @@ int main() {
 	setlocale(LC_ALL, "Portuguese");
 	
 	do { //Pegar opção do usuário
-		printf("============= Bem Vindo ao VacineJá =============\n\n");
+		printf("============ Bem Vindo ao VacinaSil =============\n\n");
 		printf("Escolha uma das seguintes opções para prosseguir:\n\n");
 		printf("=================================================\n\n");
 		printf("1.Consultar Vacinas      2.Logar      3.Registrar\n\n");
@@ -171,11 +171,11 @@ void consultarVacinas(void) {
 	printf("=========================================================================\n\n");
 	printf("             1.Lêr sobre outra vacina         2.Voltar ao menu\n\n");
 	printf("=========================================================================\n\n");
-	scanf("%i", &opcao);
+	scanf("%i", &opcao); //Pegar opção do usuário
 	system("cls");
 	} while(opcao != 1 && opcao != 2);
 	
-	switch(opcao) {
+	switch(opcao) { //Levar o usuário até a interface desejada
 		case 1:
 			consultarVacinas();
 		break;
@@ -189,12 +189,12 @@ void logar(void) {
 	printf("================ Login ================\n\n");
 	printf("Insira as informações de login:\n\n");
 	printf("E-Mail: ");
-	scanf("%s", &tentativaUsuario);
+	scanf("%s", &tentativaUsuario); //Pegar e-mail
 	printf("Senha: ");
-	scanf("%s", &tentativaSenha);
+	scanf("%s", &tentativaSenha); //Pegar senha
 	printf("\n=======================================\n\n");
 	
-	if (strcmp(tentativaUsuario, usuarioRegistrado) == 0 || strcmp(tentativaUsuario, "admin") == 0 && strcmp(tentativaSenha, senhaRegistrada) || strcmp(tentativaSenha, "123") == 0) {
+	if (strcmp(tentativaUsuario, usuarioRegistrado) == 0 && strcmp(tentativaSenha, senhaRegistrada) == 0) { //Checar credenciais
 		printf("Login efetuado com sucesso!\n");
 		printf("Aperte qualquer botão para continuar...\n\n");
 		printf("=======================================\n\n");
@@ -205,7 +205,7 @@ void logar(void) {
 	} else {
 		printf("Falha no login, credenciais incorretas.\n");
 		printf("Escolha uma das seguintes opções:\n\n");	
-		do {
+		do { //Pegar opção do usuário
 			printf("=======================================\n\n");
 			printf("1.Tentar novamente    2.Registrar conta\n\n");
 			printf("            3.Voltar ao menu\n\n");
@@ -214,7 +214,7 @@ void logar(void) {
 			system("cls");
 		} while (opcao < 1 || opcao > 3);
 		
-		switch(opcao) {
+		switch(opcao) { //Levar o usuário até a interface desejada
 			case 1:
 				logar();
 			break;
@@ -232,18 +232,18 @@ void registrar(void) {
 	printf("=============== Registrar ===============\n\n");
 	printf("Insira um e-mail para a abrir uma conta:\n\n");
 	printf("=========================================\n\n");
-	scanf("%s", &usuarioRegistrado);
+	scanf("%s", &usuarioRegistrado); //Registrar e-mail
 	system("cls");
 	
 	printf("============ Registrar ============\n\n");
-	printf("Identidade confirmada com sucesso!\n");
+	printf("Identidade confirmada com sucesso!\n\n");
 	printf("Insira uma senha para sua conta:\n\n");
 	printf("===================================\n\n");
-	scanf("%s", &senhaRegistrada);
+	scanf("%s", &senhaRegistrada); //Registrar senha
 	system("cls");
 	
 	printf("============== Registrar ==============\n\n");
-	printf("Conta criada com sucesso!\n");
+	printf("Conta criada com sucesso!\n\n");
 	printf("Aperte qualquer botão para continuar...\n\n");
 	printf("=======================================\n\n");
 	getchar();
@@ -254,7 +254,7 @@ void registrar(void) {
 }
 
 void sistema(void) {
-	do {
+	do { //Pegar opção do usuário
 		printf("==================== Sistema ====================\n\n");
 		printf("Escolha uma das seguintes opcoes para prosseguir:\n\n");
 		printf("=================================================\n\n");
@@ -266,7 +266,7 @@ void sistema(void) {
 	} while (opcao < 1 || opcao > 3);
 	getchar();
 	
-	switch(opcao) {
+	switch(opcao) { //Levar o usuário até a interface desejada
 		case 1:
 			consultarPaciente();
 		break;
@@ -281,24 +281,24 @@ void sistema(void) {
 
 void registrarPaciente(void) {
 	printf("============ Registrar Paciente ============\n\n");
-	printf("Insira o nome completo do paciente:\n\n");
+	printf("Insira o nome completo do(a) paciente:\n\n");
 	printf("============================================\n\n");
-	fgets(nomePaciente, 50, stdin);
+	fgets(nomePaciente, 32, stdin); //Pegar nome do(a) paciente
 	nomePaciente[strcspn(nomePaciente, "\n")] = 0;
 	system("cls");
 	
-	do {
+	do { //Pegar sexo do(a) paciente
 		printf("======== Registrar Paciente ========\n\n");
-		printf("Insira o sexo do paciente (m ou f):\n\n");
+		printf("Insira o sexo do(a) paciente (m ou f):\n\n");
 		printf("====================================\n\n");
 		scanf("%c", &sexoPaciente);
 		system("cls");
 	} while (tolower(sexoPaciente) != 'f' && tolower(sexoPaciente) != 'm');
 	
 	printf("======= Registrar Paciente =======\n\n");
-	printf("Insira o cpf do paciente:\n\n");
+	printf("Insira o cpf do(a) paciente:\n\n");
 	printf("==================================\n\n");
-	scanf("%s", &cpfPaciente);
+	scanf("%s", &cpfPaciente); //Pegar o CPF do(a) paciente
 	system("cls");
 	
 	do {
@@ -307,7 +307,7 @@ void registrarPaciente(void) {
 		scanf("%i", &opcao);
 		system("cls");
 		
-		if (opcao > 0 && opcao <= 10) {
+		if (opcao > 0 && opcao <= 10) { //Registrar as vacinas tomadas pelo paciente
 			idVacina[quantVacinas] = opcao;
 			quantVacinas ++;
 		} else if (opcao != -1){
@@ -383,12 +383,12 @@ void consultarPaciente(void) {
 			printf("==========================================\n\n");
 			printf("1.Voltar ao menu        2.Finalizar sessão\n\n");
 			printf("==========================================\n\n");
-			scanf("%i", &opcao);
+			scanf("%i", &opcao); //Pegar opção do usuário
 			system("cls");
 		} while (opcao < 1 || opcao > 2);
 		getchar();
 		
-		switch(opcao) {
+		switch(opcao) { //Levar o usuário até a interface desejada
 			case 1:
 				sistema();
 			break;
@@ -398,17 +398,17 @@ void consultarPaciente(void) {
 	} else {
 		printf("Falha na busca, paciente não encontrado.\n");
 		printf("Escolha uma das seguintes opções:\n\n");	
-		do {
+		do { //Pegar opção do usuário
 			printf("==========================================\n\n");
 			printf("1.Tentar novamente    2.Registrar paciente\n\n");
 			printf("            3.Voltar ao menu\n\n");
 			printf("==========================================\n\n");
-			scanf("%i", &opcao);
+			scanf("%i", &opcao); 
 			system("cls");
 		} while (opcao < 1 || opcao > 3);
 		getchar();
 		
-		switch(opcao) {
+		switch(opcao) { //Levar o usuário até a interface desejada
 			case 1:
 				consultarPaciente();
 			break;
